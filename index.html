@@ -1,0 +1,826 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Trần Thế Quân · Full‑stack Developer</title>
+    <!-- Google Fonts + Font Awesome + AOS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300..700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Inter", sans-serif;
+        background: #f0f5fa;
+        color: #1e293b;
+        line-height: 1.5;
+        scroll-behavior: smooth;
+      }
+
+      /* full-width container */
+      .wrapper {
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 2rem 2rem;
+      }
+
+      /* glassmorphism cards (kept for consistency) */
+      .glass-card {
+        background: rgba(255, 255, 255, 0.85);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.5);
+        border-radius: 2rem;
+        box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
+      }
+
+      /* header premium */
+      .header-premium {
+        background: radial-gradient(circle at 30% 30%, #1b4b61, #0a1f2b);
+        color: white;
+        border-radius: 2rem 2rem 2rem 2rem;
+        padding: 2.5rem 3rem;
+        margin-bottom: 2.5rem;
+        box-shadow: 0 30px 40px -20px rgba(0, 40, 60, 0.5);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .header-premium::before {
+        content: "";
+        position: absolute;
+        top: -20%;
+        right: -10%;
+        width: 400px;
+        height: 400px;
+        background: radial-gradient(circle, #4797b3 0%, transparent 70%);
+        opacity: 0.2;
+        border-radius: 50%;
+        pointer-events: none;
+      }
+
+      /* lining navigation */
+      .nav-lining {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 2rem;
+        margin: 2rem 0 1rem;
+        padding: 0.75rem 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+      }
+
+      .nav-lining a {
+        color: #dfecf2;
+        text-decoration: none;
+        font-weight: 500;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.4rem 0.2rem;
+        border-bottom: 2px solid transparent;
+        transition: 0.2s;
+        font-size: 1.1rem;
+      }
+
+      .nav-lining a i {
+        color: #80d0e6;
+        font-size: 1rem;
+      }
+
+      .nav-lining a:hover {
+        color: white;
+        border-bottom-color: #80d0e6;
+      }
+
+      /* quick info chips */
+      .info-chips {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem 2rem;
+        margin-top: 1.8rem;
+      }
+
+      .chip {
+        background: rgba(255, 255, 255, 0.1);
+        padding: 0.6rem 1.5rem;
+        border-radius: 50px;
+        display: flex;
+        align-items: center;
+        gap: 0.8rem;
+        font-size: 0.95rem;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+      }
+
+      .chip i {
+        color: #7fc1d0;
+        width: 1.2rem;
+      }
+      .chip a {
+        color: white;
+        text-decoration: none;
+        border-bottom: 1px dotted rgba(255, 255, 255, 0.3);
+      }
+      .chip a:hover {
+        border-bottom: 1px solid white;
+      }
+
+      /* profile row */
+      .profile-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 2rem;
+        background: white;
+        border-radius: 2rem;
+        padding: 2rem 2.5rem;
+        margin: 2rem 0 2.5rem;
+        box-shadow: 0 20px 40px -12px rgba(0, 32, 64, 0.12);
+        border: 1px solid #e2edf5;
+      }
+
+      .overview-text {
+        flex: 2;
+        min-width: 300px;
+      }
+      .overview-text h2 {
+        font-size: 2rem;
+        font-weight: 600;
+        display: flex;
+        gap: 0.8rem;
+        margin-bottom: 1.5rem;
+      }
+      .overview-list {
+        list-style: none;
+      }
+      .overview-list li {
+        margin-bottom: 1rem;
+        display: flex;
+        gap: 1rem;
+        font-size: 1rem;
+      }
+      .overview-list li i {
+        color: #1f6f8f;
+        width: 1.6rem;
+        font-size: 1.2rem;
+      }
+
+      /* AVATAR: hình tròn, tỉ lệ 4x6 (2:3) */
+      .avatar-box {
+        flex: 1;
+        min-width: 240px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
+      .avatar {
+        width: 100%;
+        max-width: 280px;
+        aspect-ratio: 2 / 3; /* 4x6 = 2:3 */
+        border-radius:5%;
+        object-fit: cover;
+        border: 5px solid white;
+        box-shadow: 0 20px 30px -8px rgba(15, 70, 90, 0.4);
+        transition:
+          transform 0.3s ease,
+          box-shadow 0.3s ease;
+        background: #d1e5f0; /* fallback */
+      }
+      .avatar:hover {
+        transform: scale(1.02) translateY(-5px);
+        box-shadow: 0 30px 40px -10px #0b4055;
+      }
+      .avatar-caption {
+        margin-top: 1rem;
+        font-weight: 500;
+        color: #1d4e67;
+        background: rgba(255, 255, 255, 0.6);
+        padding: 0.3rem 1.2rem;
+        border-radius: 40px;
+        font-size: 0.9rem;
+      }
+
+      /* section titles */
+      .section-title-modern {
+        font-size: 2.2rem;
+        font-weight: 700;
+        margin: 3rem 0 2rem;
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+      }
+
+      .section-title-modern i {
+        background: #113946;
+        color: white;
+        padding: 0.7rem;
+        border-radius: 50%;
+        font-size: 1.3rem;
+        box-shadow: 0 8px 14px -6px #0b2b40;
+      }
+
+      /* edu-exp cards */
+      .edu-exp-grid {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 2rem;
+      }
+
+      .edu-card-modern,
+      .exp-card-modern {
+        background: white;
+        border-radius: 2rem;
+        padding: 2rem 2.2rem;
+        border: 1px solid #e2edf2;
+        box-shadow: 0 15px 30px -10px rgba(0, 45, 60, 0.1);
+        transition: 0.2s;
+      }
+
+      .edu-card-modern {
+        flex: 1 1 260px;
+      }
+      .exp-card-modern {
+        flex: 2 1 440px;
+      }
+
+      .date-chip {
+        background: #1f6f8f;
+        color: white;
+        padding: 0.2rem 1.5rem;
+        border-radius: 40px;
+        display: inline-block;
+        font-size: 0.85rem;
+        font-weight: 500;
+        margin-bottom: 1rem;
+      }
+
+      /* skills arena */
+      .skills-arena {
+        background: linear-gradient(115deg, #f6fbfe, #ecf5fa);
+        border-radius: 3rem;
+        padding: 2.5rem 2rem;
+        margin: 2rem 0 2.5rem;
+        box-shadow:
+          inset 0 -2px 10px rgba(255, 255, 255, 0.8),
+          0 20px 30px -10px rgba(2, 50, 70, 0.2);
+      }
+
+      .skill-bubbles {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 1.2rem 1.8rem;
+      }
+
+      .skill-item {
+        background: white;
+        padding: 0.8rem 1.8rem 0.8rem 1.4rem;
+        border-radius: 60px;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.8rem;
+        font-weight: 500;
+        box-shadow: 0 10px 18px -8px rgba(15, 70, 100, 0.2);
+        border: 1px solid rgba(120, 180, 210, 0.3);
+        transition: all 0.2s;
+        animation: pulse-skill 3s infinite;
+        transform-origin: center;
+      }
+
+      .skill-item i {
+        font-size: 1.7rem;
+        color: #1f6f8f;
+        transition: transform 0.2s;
+      }
+
+      .skill-item:hover {
+        transform: scale(1.05) translateY(-3px);
+        background: #ffffff;
+        border-color: #4797b3;
+        box-shadow: 0 18px 28px -10px #0b4055;
+      }
+
+      .skill-item:hover i {
+        transform: rotate(5deg) scale(1.1);
+        color: #0b2b40;
+      }
+
+      @keyframes pulse-skill {
+        0% {
+          box-shadow: 0 5px 15px rgba(27, 75, 97, 0.1);
+        }
+        50% {
+          box-shadow: 0 12px 25px rgba(18, 95, 120, 0.25);
+        }
+        100% {
+          box-shadow: 0 5px 15px rgba(27, 75, 97, 0.1);
+        }
+      }
+
+      .skill-cat-label {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 1rem 2rem;
+        margin-top: 2.2rem;
+        padding: 1rem 2rem;
+        background: rgba(255, 255, 255, 0.6);
+        border-radius: 70px;
+      }
+
+      .skill-cat-label span {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        background: #d3e6f2;
+        padding: 0.4rem 1.5rem;
+        border-radius: 40px;
+        font-size: 0.95rem;
+      }
+
+      /* projects grid */
+      .projects-grid-modern {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+        margin: 2rem 0 2.5rem;
+      }
+
+      .project-card-modern {
+        background: white;
+        border-radius: 2rem;
+        padding: 2rem;
+        border: 1px solid #dae9f2;
+        transition: all 0.25s;
+        box-shadow: 0 8px 18px -8px rgba(0, 44, 62, 0.08);
+        position: relative;
+      }
+
+      .project-card-modern:hover {
+        transform: scale(1.02) translateY(-6px);
+        border-color: #80b8d1;
+        box-shadow: 0 30px 40px -15px #144c63;
+      }
+
+      .project-header h3 {
+        font-size: 1.5rem;
+      }
+      .project-header i {
+        color: #1f6f8f;
+        font-size: 1.5rem;
+      }
+
+      .project-meta span {
+        background: #e4f0f7;
+        padding: 0.3rem 1.2rem;
+        border-radius: 40px;
+        font-size: 0.9rem;
+      }
+
+      .tech-badge-modern small {
+        background: #d1e3ef;
+        padding: 0.3rem 1rem;
+        border-radius: 40px;
+        font-size: 0.8rem;
+        font-weight: 500;
+        display: inline-block;
+        margin: 0.2rem 0.2rem;
+      }
+
+      .mentor {
+        font-size: 0.9rem;
+        border-top: 1px dashed #c5dae7;
+        padding-top: 0.8rem;
+        margin-top: 0.8rem;
+        color: #255a73;
+      }
+
+      /* achievement strip */
+      .achievement-strip {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 2rem;
+        background: #0e2f3d;
+        color: white;
+        padding: 2rem 3rem;
+        border-radius: 5rem;
+        margin: 3rem 0 2rem;
+        justify-content: center;
+        box-shadow: 0 20px 30px -10px #06212b;
+      }
+
+      .achievement-strip span {
+        display: flex;
+        align-items: center;
+        gap: 0.8rem;
+      }
+
+      /* footer */
+      .footer-modern {
+        background: #0b2b40;
+        color: white;
+        padding: 2rem 3rem;
+        border-radius: 3rem 3rem 2rem 2rem;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-between;
+        margin-top: 3rem;
+      }
+
+      .github-btn {
+        background: #1c4b62;
+        padding: 0.9rem 2.5rem;
+        border-radius: 50px;
+        color: white;
+        text-decoration: none;
+        font-weight: 600;
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        border: 1px solid #4897b5;
+        transition: 0.2s;
+      }
+
+      .github-btn:hover {
+        background: #256f8c;
+        transform: scale(1.02);
+      }
+
+      /* BACK TO TOP BUTTON */
+      .back-to-top {
+        position: fixed;
+        bottom: 2.5rem;
+        right: 2.5rem;
+        background: #1f6f8f;
+        color: white;
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.8rem;
+        box-shadow: 0 12px 25px rgba(0, 40, 60, 0.5);
+        cursor: pointer;
+        border: 2px solid white;
+        transition: 0.25s ease;
+        z-index: 999;
+        opacity: 0.9;
+        text-decoration: none;
+        scroll-behavior: smooth;
+      }
+
+      .back-to-top:hover {
+        background: #0b2b40;
+        transform: scale(1.1) translateY(-5px);
+        box-shadow: 0 20px 30px rgba(0, 0, 0, 0.4);
+        opacity: 1;
+      }
+
+      /* responsive */
+      @media (max-width: 700px) {
+        .wrapper {
+          padding: 1rem;
+        }
+        .header-premium {
+          padding: 1.8rem;
+        }
+        .back-to-top {
+          bottom: 1.5rem;
+          right: 1.5rem;
+          width: 50px;
+          height: 50px;
+          font-size: 1.5rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- BACK TO TOP BUTTON (anchor link) -->
+    <a href="#" class="back-to-top" aria-label="Back to top">
+      <i class="fas fa-arrow-up"></i>
+    </a>
+
+    <div class="wrapper">
+      <!-- HEADER -->
+      <header class="header-premium" data-aos="fade-down">
+        <div
+          style="
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+          "
+        >
+          <div>
+            <h1
+              style="font-size: 3.5rem; font-weight: 700; letter-spacing: -1px"
+            >
+              Trần Thế Quân
+            </h1>
+            <div
+              style="
+                font-size: 1.5rem;
+                color: #b0d4e0;
+                display: flex;
+                gap: 0.8rem;
+                margin: 0.5rem 0 0;
+              "
+            >
+              <i class="fas fa-code"></i> Full‑stack Developer & problem solver
+            </div>
+          </div>
+          <!-- symbolic icon -->
+          <div style="font-size: 3.5rem; opacity: 0.7">
+            <i class="fas fa-robot"></i>
+          </div>
+        </div>
+
+        <!-- lining navigation -->
+        <div class="nav-lining">
+          <a href="#overview"><i class="fas fa-user-astronaut"></i> Overview</a>
+          <a href="#education"
+            ><i class="fas fa-graduation-cap"></i> Education</a
+          >
+          <a href="#skills"><i class="fas fa-cog"></i> Skills</a>
+          <a href="#projects"><i class="fas fa-laptop-code"></i> Projects</a>
+          <a href="#contact"><i class="fas fa-address-card"></i> Contact</a>
+        </div>
+
+        <!-- info chips (all English) -->
+        <div class="info-chips">
+          <div class="chip"><i class="fas fa-calendar-alt"></i> 19/09/2004</div>
+          <div class="chip"><i class="fas fa-phone-alt"></i> +84 396865585</div>
+          <div class="chip">
+            <i class="fas fa-envelope"></i>
+            <a href="mailto:aboloscaizo@gmail.com">aboloscaizo@gmail.com</a>
+          </div>
+          <div class="chip"><i class="fas fa-map-pin"></i> Hanoi, Vietnam</div>
+          <div class="chip">
+            <i class="fas fa-globe"></i>
+            <a href="https://tranquan.vercel.app" target="_blank"
+              >tranquan.vercel.app</a
+            >
+          </div>
+        </div>
+      </header>
+
+      <!-- OVERVIEW with circular 4x6 avatar -->
+      <section id="overview" class="profile-row" data-aos="fade-up">
+        <div class="overview-text">
+          <h2>
+            <i class="fas fa-user-astronaut" style="color: #1f6f8f"></i>
+            Overview
+          </h2>
+          <ul class="overview-list">
+            <li>
+              <i class="fas fa-check-circle"></i> 2+ years experience · strong
+              communication & fast learner
+            </li>
+            <li>
+              <i class="fas fa-check-circle"></i> Full‑stack web: React, Node.js
+              (Express), MySQL, MongoDB
+            </li>
+            <li>
+              <i class="fas fa-check-circle"></i> JavaScript (DOM, OOP), REST
+              API, Git/GitLab professional
+            </li>
+            <li>
+              <i class="fas fa-check-circle"></i> 3rd prize Embedded Systems
+              Programming · scholarships 7/8 semesters
+            </li>
+            <li>
+              <i class="fas fa-check-circle"></i> “Pioneer Programming”
+              scholarship (Aptech) · GPA 3.62/4.0
+            </li>
+            <li>
+              <i class="fas fa-check-circle"></i> Docker, Redis, AWS (EC2/S3) ·
+              quick to adopt new tech
+            </li>
+          </ul>
+        </div>
+        <!-- Avatar container: hình tròn 4x6 (dùng ảnh mẫu ./image.png) -->
+        <div class="avatar-box">
+          <img src="./image.png" alt="Trần Thế Quân avatar" class="avatar" />
+        </div>
+      </section>
+
+      <!-- EDUCATION & EXPERIENCE -->
+      <section id="education" data-aos="fade-right">
+        <div class="section-title-modern">
+          <i class="fas fa-graduation-cap"></i> Education & Experience
+        </div>
+      </section>
+      <div class="edu-exp-grid">
+        <div class="edu-card-modern" data-aos="flip-left">
+          <div class="date-chip">2022 – 2026</div>
+          <h2 style="font-size: 1.8rem">Hanoi Metropolitan University</h2>
+          <p style="color: #1f6f8f; font-size: 1.2rem">
+            Information Technology (4th year)
+          </p>
+          <p style="margin: 1rem 0">
+            <i class="fas fa-star" style="color: #f4b740"></i> GPA
+            <strong>3.62/4.0</strong>
+          </p>
+          <p>
+            <i class="fas fa-trophy" style="color: #c47d10"></i> Scholarship 7/8
+            semesters
+          </p>
+        </div>
+        <div class="exp-card-modern" data-aos="flip-right">
+          <div class="exp-item">
+            <span class="date-chip">11/2025 – Present</span>
+            <h3>Full‑stack Developer @ Caerux Lab</h3>
+            <p>
+              Propose solutions & develop frontend/backend for outsourcing and
+              in‑house products.
+            </p>
+          </div>
+          <div class="exp-item" style="margin-top: 1.8rem">
+            <span class="date-chip">06/2024 – 11/2025</span>
+            <h3>Full‑stack Freelancer @ Dinolab</h3>
+            <p>
+              Built web modules with ReactJS and NodeJS for various projects.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- SKILLS with icons + animations (all English) -->
+      <section id="skills" data-aos="zoom-in-up">
+        <div class="section-title-modern">
+          <i class="fas fa-cog"></i> Technical Skills
+        </div>
+      </section>
+      <div class="skills-arena">
+        <div class="skill-bubbles">
+          <span class="skill-item" data-aos="flip-up" data-aos-delay="50"
+            ><i class="fab fa-react"></i> ReactJS</span
+          >
+          <span class="skill-item" data-aos="flip-up" data-aos-delay="100"
+            ><i class="fab fa-node-js"></i> Node.js</span
+          >
+          <span class="skill-item" data-aos="flip-up" data-aos-delay="150"
+            ><i class="fas fa-database"></i> MongoDB</span
+          >
+          <span class="skill-item" data-aos="flip-up" data-aos-delay="200"
+            ><i class="fas fa-database"></i> MySQL</span
+          >
+          <span class="skill-item" data-aos="flip-up" data-aos-delay="250"
+            ><i class="fab fa-js"></i> JavaScript</span
+          >
+          <span class="skill-item" data-aos="flip-up" data-aos-delay="300"
+            ><i class="fab fa-docker"></i> Docker</span
+          >
+          <span class="skill-item" data-aos="flip-up" data-aos-delay="350"
+            ><i class="fab fa-git-alt"></i> Git</span
+          >
+          <span class="skill-item" data-aos="flip-up" data-aos-delay="400"
+            ><i class="fas fa-cloud"></i> AWS EC2</span
+          >
+          <span class="skill-item" data-aos="flip-up" data-aos-delay="450"
+            ><i class="fas fa-code-branch"></i> REST API</span
+          >
+          <span class="skill-item" data-aos="flip-up" data-aos-delay="500"
+            ><i class="fas fa-layer-group"></i> OOP</span
+          >
+        </div>
+        <div class="skill-cat-label" data-aos="fade-up">
+          <span><i class="fas fa-bolt"></i> Main: React, Node, JS</span>
+          <span><i class="fas fa-plug"></i> DB: MySQL, MongoDB, SQLServer</span>
+          <span><i class="fas fa-tools"></i> Tools: Docker, Git, Redis</span>
+        </div>
+      </div>
+
+      <!-- PROJECTS (English) -->
+      <section id="projects" data-aos="fade-right">
+        <div class="section-title-modern">
+          <i class="fas fa-laptop-code"></i> Featured Projects
+        </div>
+      </section>
+      <div class="projects-grid-modern">
+        <!-- project 1 -->
+        <div class="project-card-modern" data-aos="fade-up" data-aos-delay="0">
+          <div class="project-header">
+            <i class="fas fa-store"></i>
+            <h3>E‑commerce Phone Store</h3>
+          </div>
+          <div class="project-meta">
+            <span><i class="fas fa-calendar"></i> 8/2025 – 12/2025</span
+            ><span>👥 8 mem</span>
+          </div>
+          <p style="margin: 0.5rem 0">
+            <strong>Fullstack:</strong> DB design, query optimization, report
+            modules.
+          </p>
+          <div class="tech-badge-modern">
+            <small>ReactJS</small><small>NodeJS</small><small>MongoDB</small
+            ><small>Docker</small>
+          </div>
+          <div class="mentor">
+            <i class="fas fa-user-tie"></i> Mentor: Hoang Minh Tuan
+            <i class="fa-solid fa-phone"></i> 0968511155
+          </div>
+        </div>
+        <!-- project 2 -->
+        <div class="project-card-modern" data-aos="fade-up" data-aos-delay="80">
+          <div class="project-header">
+            <i class="fas fa-graduation-cap"></i>
+            <h3>LMS · Course management</h3>
+          </div>
+          <div class="project-meta">
+            <span><i class="fas fa-calendar"></i> 4/2025 – 8/2025</span
+            ><span>👥 8 mem</span>
+          </div>
+          <p>Heavy frontend, integrated payments, course administration.</p>
+          <div class="tech-badge-modern">
+            <small>ReactJS</small><small>NodeJS</small><small>MongoDB</small
+            ><small>AWS S3</small>
+          </div>
+          <div class="mentor">
+            <i class="fas fa-user-tie"></i> Mentor: Hoang Minh Tuan
+            <i class="fa-solid fa-phone"></i> 0968511155
+          </div>
+        </div>
+        <!-- project 3 -->
+        <div
+          class="project-card-modern"
+          data-aos="fade-up"
+          data-aos-delay="150"
+        >
+          <div class="project-header">
+            <i class="fab fa-laravel"></i>
+            <h3>LMS (Laravel)</h3>
+          </div>
+          <div class="project-meta">
+            <span><i class="fas fa-calendar"></i> 4/2025 – 8/2025</span
+            ><span>👥 10 mem</span>
+          </div>
+          <p>HTML/CSS/JS, combined with Laravel, MySQL, Docker.</p>
+          <div class="tech-badge-modern">
+            <small>HTML/CSS/JS</small><small>Laravel</small><small>MySQL</small
+            ><small>Docker</small>
+          </div>
+          <div class="mentor">
+            <i class="fas fa-user-tie"></i> Mentor: Dao Van Thanh
+            <i class="fa-solid fa-phone"></i> 0397339077
+          </div>
+        </div>
+      </div>
+
+      <!-- ACHIEVEMENTS (English) -->
+      <div class="achievement-strip" data-aos="flip-up">
+        <span><i class="fas fa-medal"></i> 3rd prize Embedded Systems</span>
+        <span><i class="fas fa-award"></i> “Pioneer Programming” Aptech</span>
+        <span><i class="fas fa-school"></i> 7/8 semesters scholarship</span>
+        <span><i class="fas fa-bolt"></i> OOP / cache strategies</span>
+      </div>
+
+      <!-- FOOTER (CONTACT) English -->
+      <footer id="contact" class="footer-modern" data-aos="fade-up">
+        <div style="display: flex; align-items: center; gap: 1rem">
+          <i class="fab fa-github" style="font-size: 2.5rem"></i>
+          <span style="font-size: 1.2rem">Check my repositories on GitHub</span>
+        </div>
+        <a
+          href="https://github.com/aboloscaizo"
+          target="_blank"
+          class="github-btn"
+        >
+          <i class="fab fa-github"></i> github.com/aboloscaizo
+        </a>
+      </footer>
+
+      <!-- tiny watermark (optional) -->
+      <div style="text-align: right; margin-top: 1rem; color: #9bb5c4">
+        ✨ professional portfolio · full‑screen · back‑to‑top button
+      </div>
+    </div>
+
+    <!-- AOS -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+      AOS.init({
+        duration: 800,
+        easing: "ease-in-out",
+        once: true,
+        mirror: false,
+        offset: 30,
+      });
+    </script>
+  </body>
+</html>

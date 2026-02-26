@@ -31,14 +31,12 @@
         scroll-behavior: smooth;
       }
 
-      /* full-width container */
       .wrapper {
         max-width: 1400px;
         margin: 0 auto;
         padding: 2rem 2rem;
       }
 
-      /* glassmorphism cards (kept for consistency) */
       .glass-card {
         background: rgba(255, 255, 255, 0.85);
         backdrop-filter: blur(10px);
@@ -48,7 +46,6 @@
         box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
       }
 
-      /* header premium */
       .header-premium {
         background: radial-gradient(circle at 30% 30%, #1b4b61, #0a1f2b);
         color: white;
@@ -73,7 +70,6 @@
         pointer-events: none;
       }
 
-      /* lining navigation */
       .nav-lining {
         display: flex;
         flex-wrap: wrap;
@@ -106,7 +102,6 @@
         border-bottom-color: #80d0e6;
       }
 
-      /* quick info chips */
       .info-chips {
         display: flex;
         flex-wrap: wrap;
@@ -138,7 +133,6 @@
         border-bottom: 1px solid white;
       }
 
-      /* profile row */
       .profile-row {
         display: flex;
         flex-wrap: wrap;
@@ -177,7 +171,6 @@
         font-size: 1.2rem;
       }
 
-      /* AVATAR: hình tròn, tỉ lệ 4x6 (2:3) */
       .avatar-box {
         flex: 1;
         min-width: 240px;
@@ -189,15 +182,15 @@
       .avatar {
         width: 100%;
         max-width: 280px;
-        aspect-ratio: 2 / 3; /* 4x6 = 2:3 */
-        border-radius:5%;
+        aspect-ratio: 2 / 3;
+        border-radius: 5%;
         object-fit: cover;
         border: 5px solid white;
         box-shadow: 0 20px 30px -8px rgba(15, 70, 90, 0.4);
         transition:
           transform 0.3s ease,
           box-shadow 0.3s ease;
-        background: #d1e5f0; /* fallback */
+        background: #d1e5f0;
       }
       .avatar:hover {
         transform: scale(1.02) translateY(-5px);
@@ -213,7 +206,6 @@
         font-size: 0.9rem;
       }
 
-      /* section titles */
       .section-title-modern {
         font-size: 2.2rem;
         font-weight: 700;
@@ -232,7 +224,6 @@
         box-shadow: 0 8px 14px -6px #0b2b40;
       }
 
-      /* edu-exp cards */
       .edu-exp-grid {
         display: flex;
         flex-wrap: wrap;
@@ -267,7 +258,6 @@
         margin-bottom: 1rem;
       }
 
-      /* skills arena */
       .skills-arena {
         background: linear-gradient(115deg, #f6fbfe, #ecf5fa);
         border-radius: 3rem;
@@ -351,10 +341,9 @@
         font-size: 0.95rem;
       }
 
-      /* projects grid */
       .projects-grid-modern {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
         gap: 2rem;
         margin: 2rem 0 2.5rem;
       }
@@ -383,13 +372,25 @@
         font-size: 1.5rem;
       }
 
+      .project-meta {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.8rem;
+        margin: 0.8rem 0;
+      }
       .project-meta span {
         background: #e4f0f7;
         padding: 0.3rem 1.2rem;
         border-radius: 40px;
         font-size: 0.9rem;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.4rem;
       }
 
+      .tech-badge-modern {
+        margin: 1rem 0;
+      }
       .tech-badge-modern small {
         background: #d1e3ef;
         padding: 0.3rem 1rem;
@@ -406,9 +407,15 @@
         padding-top: 0.8rem;
         margin-top: 0.8rem;
         color: #255a73;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 0.8rem;
+      }
+      .mentor i {
+        margin-right: 0.2rem;
       }
 
-      /* achievement strip */
       .achievement-strip {
         display: flex;
         flex-wrap: wrap;
@@ -428,7 +435,6 @@
         gap: 0.8rem;
       }
 
-      /* footer */
       .footer-modern {
         background: #0b2b40;
         color: white;
@@ -460,7 +466,6 @@
         transform: scale(1.02);
       }
 
-      /* BACK TO TOP BUTTON */
       .back-to-top {
         position: fixed;
         bottom: 2.5rem;
@@ -491,7 +496,6 @@
         opacity: 1;
       }
 
-      /* responsive */
       @media (max-width: 700px) {
         .wrapper {
           padding: 1rem;
@@ -510,7 +514,6 @@
     </style>
   </head>
   <body>
-    <!-- BACK TO TOP BUTTON (anchor link) -->
     <a href="#" class="back-to-top" aria-label="Back to top">
       <i class="fas fa-arrow-up"></i>
     </a>
@@ -544,13 +547,11 @@
               <i class="fas fa-code"></i> Full‑stack Developer & problem solver
             </div>
           </div>
-          <!-- symbolic icon -->
           <div style="font-size: 3.5rem; opacity: 0.7">
             <i class="fas fa-robot"></i>
           </div>
         </div>
 
-        <!-- lining navigation -->
         <div class="nav-lining">
           <a href="#overview"><i class="fas fa-user-astronaut"></i> Overview</a>
           <a href="#education"
@@ -561,7 +562,6 @@
           <a href="#contact"><i class="fas fa-address-card"></i> Contact</a>
         </div>
 
-        <!-- info chips (all English) -->
         <div class="info-chips">
           <div class="chip"><i class="fas fa-calendar-alt"></i> 19/09/2004</div>
           <div class="chip"><i class="fas fa-phone-alt"></i> +84 396865585</div>
@@ -573,13 +573,13 @@
           <div class="chip">
             <i class="fas fa-globe"></i>
             <a href="https://website-cv-tranquan.vercel.app" target="_blank"
-              >https://website-cv-tranquan.vercel.app</a
+              >website-cv-tranquan.vercel.app</a
             >
           </div>
         </div>
       </header>
 
-      <!-- OVERVIEW with circular 4x6 avatar -->
+      <!-- OVERVIEW -->
       <section id="overview" class="profile-row" data-aos="fade-up">
         <div class="overview-text">
           <h2>
@@ -588,34 +588,44 @@
           </h2>
           <ul class="overview-list">
             <li>
-              <i class="fas fa-check-circle"></i> 2+ years experience · strong
-              communication & fast learner
+              <i class="fas fa-check-circle"></i> Over 2 years of experience in
+              programming · good communication & quick learning
             </li>
             <li>
-              <i class="fas fa-check-circle"></i> Full‑stack web: React, Node.js
-              (Express), MySQL, MongoDB
+              <i class="fas fa-check-circle"></i> Strengths: Front-end
+              technology and Back-end web application development
             </li>
             <li>
-              <i class="fas fa-check-circle"></i> JavaScript (DOM, OOP), REST
-              API, Git/GitLab professional
+              <i class="fas fa-check-circle"></i> Strong Experience in: Node
+              (ExpressJS), JavaScript (ReactJS), MySQL, NoSQL (MongoDB), JSON,
+              API
             </li>
             <li>
-              <i class="fas fa-check-circle"></i> 3rd prize Embedded Systems
-              Programming · scholarships 7/8 semesters
+              <i class="fas fa-check-circle"></i> Proficiency in HTML, CSS,
+              JavaScript, DOM manipulation, OOP
             </li>
             <li>
-              <i class="fas fa-check-circle"></i> “Pioneer Programming”
-              scholarship (Aptech) · GPA 3.62/4.0
+              <i class="fas fa-check-circle"></i> Thorough understanding of
+              NodeJS, ReactJS and its core principles
             </li>
             <li>
-              <i class="fas fa-check-circle"></i> Docker, Redis, AWS (EC2/S3) ·
-              quick to adopt new tech
+              <i class="fas fa-check-circle"></i> Familiarity with RESTful APIs
+              · Proficient use of GIT, GITLAB
+            </li>
+            <li>
+              <i class="fas fa-check-circle"></i> Outstanding achievements:
+              Third prize in Embedded Systems Programming, scholarships in 7 out
+              of 9 semesters, "Pioneer Programming" scholarship from Aptech
+            </li>
+            <li>
+              <i class="fas fa-check-circle"></i> Docker, Redis · Good
+              understanding of OOP methodologies, cache
             </li>
           </ul>
         </div>
-        <!-- Avatar container: hình tròn 4x6 (dùng ảnh mẫu ./image.png) -->
         <div class="avatar-box">
           <img src="./image.png" alt="Trần Thế Quân avatar" class="avatar" />
+          <div class="avatar-caption">📸 Full‑stack developer</div>
         </div>
       </section>
 
@@ -637,14 +647,14 @@
             <strong>3.62/4.0</strong>
           </p>
           <p>
-            <i class="fas fa-trophy" style="color: #c47d10"></i> Scholarship 7/8
-            semesters
+            <i class="fas fa-trophy" style="color: #c47d10"></i> Scholarships
+            7/9 semesters
           </p>
         </div>
         <div class="exp-card-modern" data-aos="flip-right">
           <div class="exp-item">
             <span class="date-chip">11/2025 – Present</span>
-            <h3>Full‑stack Developer @ Caerux Lab</h3>
+            <h3>Full‑stack Developer @ Caerux Lab Co., Ltd</h3>
             <p>
               Propose solutions & develop frontend/backend for outsourcing and
               in‑house products.
@@ -654,13 +664,13 @@
             <span class="date-chip">06/2024 – 11/2025</span>
             <h3>Full‑stack Freelancer @ Dinolab</h3>
             <p>
-              Built web modules with ReactJS and NodeJS for various projects.
+              Develop web modules on given projects using ReactJS and NodeJS.
             </p>
           </div>
         </div>
       </div>
 
-      <!-- SKILLS with icons + animations (all English) -->
+      <!-- SKILLS -->
       <section id="skills" data-aos="zoom-in-up">
         <div class="section-title-modern">
           <i class="fas fa-cog"></i> Technical Skills
@@ -672,7 +682,7 @@
             ><i class="fab fa-react"></i> ReactJS</span
           >
           <span class="skill-item" data-aos="flip-up" data-aos-delay="100"
-            ><i class="fab fa-node-js"></i> Node.js</span
+            ><i class="fab fa-node-js"></i> Node.js (Express)</span
           >
           <span class="skill-item" data-aos="flip-up" data-aos-delay="150"
             ><i class="fas fa-database"></i> MongoDB</span
@@ -681,116 +691,161 @@
             ><i class="fas fa-database"></i> MySQL</span
           >
           <span class="skill-item" data-aos="flip-up" data-aos-delay="250"
-            ><i class="fab fa-js"></i> JavaScript</span
+            ><i class="fas fa-database"></i> SQLServer</span
           >
           <span class="skill-item" data-aos="flip-up" data-aos-delay="300"
-            ><i class="fab fa-docker"></i> Docker</span
+            ><i class="fab fa-js"></i> JavaScript (ES6+)</span
           >
           <span class="skill-item" data-aos="flip-up" data-aos-delay="350"
-            ><i class="fab fa-git-alt"></i> Git</span
+            ><i class="fab fa-php"></i> PHP (Laravel)</span
           >
           <span class="skill-item" data-aos="flip-up" data-aos-delay="400"
-            ><i class="fas fa-cloud"></i> AWS EC2</span
+            ><i class="fab fa-docker"></i> Docker</span
           >
           <span class="skill-item" data-aos="flip-up" data-aos-delay="450"
-            ><i class="fas fa-code-branch"></i> REST API</span
+            ><i class="fab fa-git-alt"></i> Git / GitLab</span
           >
           <span class="skill-item" data-aos="flip-up" data-aos-delay="500"
-            ><i class="fas fa-layer-group"></i> OOP</span
+            ><i class="fas fa-cloud"></i> AWS (EC2, S3)</span
+          >
+          <span class="skill-item" data-aos="flip-up" data-aos-delay="550"
+            ><i class="fas fa-code-branch"></i> RESTful API</span
+          >
+          <span class="skill-item" data-aos="flip-up" data-aos-delay="600"
+            ><i class="fas fa-layer-group"></i> OOP / Cache</span
+          >
+          <span class="skill-item" data-aos="flip-up" data-aos-delay="650"
+            ><i class="fas fa-memory"></i> Redis</span
           >
         </div>
         <div class="skill-cat-label" data-aos="fade-up">
-          <span><i class="fas fa-bolt"></i> Main: React, Node, JS</span>
+          <span><i class="fas fa-bolt"></i> Main: React, Node, Express</span>
           <span><i class="fas fa-plug"></i> DB: MySQL, MongoDB, SQLServer</span>
-          <span><i class="fas fa-tools"></i> Tools: Docker, Git, Redis</span>
+          <span
+            ><i class="fas fa-tools"></i> Tools: Docker, Git, Redis, AWS</span
+          >
         </div>
       </div>
 
-      <!-- PROJECTS (English) -->
+      <!-- PROJECTS (updated exactly from CV) -->
       <section id="projects" data-aos="fade-right">
         <div class="section-title-modern">
           <i class="fas fa-laptop-code"></i> Featured Projects
         </div>
       </section>
       <div class="projects-grid-modern">
-        <!-- project 1 -->
+        <!-- Project 1: E-commerce Mobile Phone Store -->
         <div class="project-card-modern" data-aos="fade-up" data-aos-delay="0">
           <div class="project-header">
-            <i class="fas fa-store"></i>
-            <h3>E‑commerce Phone Store</h3>
+            <i class="fas fa-mobile-alt"></i>
+            <h3>E‑commerce Mobile Phone Store</h3>
           </div>
           <div class="project-meta">
-            <span><i class="fas fa-calendar"></i> 8/2025 – 12/2025</span
-            ><span>👥 8 mem</span>
+            <span><i class="fas fa-calendar"></i> 8/2025 – 12/2025</span>
+            <span><i class="fas fa-users"></i> 3 members</span>
           </div>
-          <p style="margin: 0.5rem 0">
-            <strong>Fullstack:</strong> DB design, query optimization, report
-            modules.
+          <p><strong>Position:</strong> Full-stack Developer</p>
+          <p style="margin: 0.5rem 0; font-size: 0.95rem">
+            <i class="fas fa-tasks"></i> Project planning, build base
+            (frontend), UI coding & API integration, backend support for
+            modules, system maintenance, server deployment.
           </p>
           <div class="tech-badge-modern">
-            <small>ReactJS</small><small>NodeJS</small><small>MongoDB</small
-            ><small>Docker</small>
+            <small>ReactJS</small><small>NodeJS (Express)</small
+            ><small>MongoDB</small><small>Docker</small><small>AWS EC2</small>
           </div>
           <div class="mentor">
             <i class="fas fa-user-tie"></i> Mentor: Hoang Minh Tuan
-            <i class="fa-solid fa-phone"></i> 0968511155
+            <i class="fas fa-phone"></i> 0968511155
+            <a
+              href="https://github.com/aboloscaizo/Mobile-store-reactjs-nodejs"
+              target="_blank"
+              style="color: #1f6f8f; margin-left: auto"
+              ><i class="fab fa-github"></i> Source</a
+            >
           </div>
         </div>
-        <!-- project 2 -->
+
+        <!-- Project 2: Fashion Store (from page 3 of CV) -->
         <div class="project-card-modern" data-aos="fade-up" data-aos-delay="80">
           <div class="project-header">
-            <i class="fas fa-graduation-cap"></i>
-            <h3>LMS · Course management</h3>
+            <i class="fas fa-tshirt"></i>
+            <h3>Fashion Store</h3>
           </div>
           <div class="project-meta">
-            <span><i class="fas fa-calendar"></i> 4/2025 – 8/2025</span
-            ><span>👥 8 mem</span>
+            <span><i class="fas fa-calendar"></i> Not specified</span>
+            <span><i class="fas fa-users"></i> 4 members</span>
           </div>
-          <p>Heavy frontend, integrated payments, course administration.</p>
+          <p><strong>Position:</strong> Full-stack Developer</p>
+          <p style="margin: 0.5rem 0; font-size: 0.95rem">
+            <i class="fas fa-tasks"></i> Database design (EAV model), propose
+            solutions, build project base, order features, search, write unit
+            tests, optimize code, support multi-environment deployment.
+          </p>
           <div class="tech-badge-modern">
-            <small>ReactJS</small><small>NodeJS</small><small>MongoDB</small
-            ><small>AWS S3</small>
+            <small>ReactJS</small><small>NodeJS (Express)</small
+            ><small>MongoDB</small><small>Docker</small><small>AWS S3</small>
           </div>
           <div class="mentor">
             <i class="fas fa-user-tie"></i> Mentor: Hoang Minh Tuan
-            <i class="fa-solid fa-phone"></i> 0968511155
+            <i class="fas fa-phone"></i> 0968511155
+            <a
+              href="https://github.com/aboloscaizo/Fashion store reactjs nodejs"
+              target="_blank"
+              style="color: #1f6f8f; margin-left: auto"
+              ><i class="fab fa-github"></i> Source</a
+            >
           </div>
         </div>
-        <!-- project 3 -->
+
+        <!-- Project 3: LMS (Laravel) -->
         <div
           class="project-card-modern"
           data-aos="fade-up"
           data-aos-delay="150"
         >
           <div class="project-header">
-            <i class="fab fa-laravel"></i>
-            <h3>LMS (Laravel)</h3>
+            <i class="fas fa-graduation-cap"></i>
+            <h3>LMS · Course management</h3>
           </div>
           <div class="project-meta">
-            <span><i class="fas fa-calendar"></i> 4/2025 – 8/2025</span
-            ><span>👥 10 mem</span>
+            <span><i class="fas fa-calendar"></i> 4/2025 – 8/2025</span>
+            <span><i class="fas fa-users"></i> 10 members</span>
           </div>
-          <p>HTML/CSS/JS, combined with Laravel, MySQL, Docker.</p>
+          <p><strong>Position:</strong> Backend Developer</p>
+          <p style="margin: 0.5rem 0; font-size: 0.95rem">
+            <i class="fas fa-tasks"></i> Database design, query optimization,
+            handle modules (reports, products, stores), develop new features.
+          </p>
           <div class="tech-badge-modern">
-            <small>HTML/CSS/JS</small><small>Laravel</small><small>MySQL</small
-            ><small>Docker</small>
+            <small>PHP (Laravel)</small><small>MySQL</small><small>Docker</small
+            ><small>AWS EC2</small>
           </div>
           <div class="mentor">
             <i class="fas fa-user-tie"></i> Mentor: Dao Van Thanh
-            <i class="fa-solid fa-phone"></i> 0397339077
+            <i class="fas fa-phone"></i> 0397339077
+            <a
+              href="https://github.com/aboloscaizo/edusorf-laravel-php"
+              target="_blank"
+              style="color: #1f6f8f; margin-left: auto"
+              ><i class="fab fa-github"></i> Source</a
+            >
           </div>
         </div>
       </div>
 
-      <!-- ACHIEVEMENTS (English) -->
+      <!-- ACHIEVEMENTS (exactly from CV) -->
       <div class="achievement-strip" data-aos="flip-up">
-        <span><i class="fas fa-medal"></i> 3rd prize Embedded Systems</span>
+        <span
+          ><i class="fas fa-medal"></i> 3rd prize Embedded Systems
+          Programming</span
+        >
         <span><i class="fas fa-award"></i> “Pioneer Programming” Aptech</span>
-        <span><i class="fas fa-school"></i> 7/8 semesters scholarship</span>
-        <span><i class="fas fa-bolt"></i> OOP / cache strategies</span>
+        <span><i class="fas fa-school"></i> Scholarships 7/9 semesters</span>
+        <span><i class="fas fa-check-circle"></i> OOP / cache strategies</span>
       </div>
 
-      <!-- FOOTER (CONTACT) English -->
+      <!-- FOOTER -->
       <footer id="contact" class="footer-modern" data-aos="fade-up">
         <div style="display: flex; align-items: center; gap: 1rem">
           <i class="fab fa-github" style="font-size: 2.5rem"></i>
@@ -804,11 +859,6 @@
           <i class="fab fa-github"></i> github.com/aboloscaizo
         </a>
       </footer>
-
-      <!-- tiny watermark (optional) -->
-      <div style="text-align: right; margin-top: 1rem; color: #9bb5c4">
-        ✨ professional portfolio · full‑screen · back‑to‑top button
-      </div>
     </div>
 
     <!-- AOS -->
